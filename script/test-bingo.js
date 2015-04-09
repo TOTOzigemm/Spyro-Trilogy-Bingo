@@ -22,12 +22,12 @@ bingoList[4] = [
   { name: "100% all 'Sunny levels'", types: ["100%", "Sunny Flight", "Sunny Beach", "Sunny Villa"] },
   { name: "100% all 'Hill' levels", types: ["100%", "Stone Hill", "Fracture Hills"] },
   { name: "100% all 'Cloud' levels", types: ["100%", "Cloud Temples", "Cloud Spires"] },
-  { name: "Collect 10 Free Lives", types: ["lives"]}
+  { name: "Collect 10 Free Life bottles/chests", types: ["lives"]}
 ];
 bingoList[5] = [
   { name: "Stand on 10 Portals", types: ["silly"] },
   { name: "Receive 3 Orbs from Hunter", types: ["orbs", "Hunter"] },
-  { name: "Kill all enemies in 5 levels", types: ["enemies"] },
+  { name: "Collect all enemy spirits in 5 levels", types: ["enemies"] },
   { name: "Collect 275 gems in Scorch", types: ["gems", "Scorch"] }
 ];
 // 
@@ -44,14 +44,14 @@ bingoList[7] = [
   { name: "100% all 'Peak' levels", types: ["100%", "Wizard Peak", "Icy Peak"] }
 ];
 bingoList[8] = [
-  { name: "100% all Peace Keepers levels", types: ["100%", "Peace Keepers", "Dry Canyon", "Cliff Town", "Ice Cavern", "Doctor Shemp", "Night Flight"] },
+  { name: "100% all Peace Keepers levels including the homeworld", types: ["100%", "Peace Keepers", "Dry Canyon", "Cliff Town", "Ice Cavern", "Doctor Shemp", "Night Flight"] },
   { name: "Collect 100 'non-enemy' gems in Ice Cavern", types: ["gems", "no-enemy", "Ice Cavern"] },
   { name: "Collect 300 gems in Blowhard", types: ["gems", "Blowhard"] },
   { name: "Save all 4 Dragons in Alpine Ridge", types: ["dragons", "Alpine Ridge"] }
 ];
 bingoList[9] = [
-  { name: "Complete 15 minigames/side areas", types: ["orbs", "eggs"] },
-  { name: "Collect 100 gems in every Sunrise Springs level", types: ["gems", "Sunrise Springs", "Sunny Villa", "Cloud Spires", "Sheila's Alp", "Molten Crater", "Seashell Shore", "Mushroom Speedway"] },
+  { name: "Collect 15 orbs/eggs from mingames/side areas", types: ["orbs", "eggs"] },
+  { name: "Collect 100 gems in every Sunrise Springs level including the homeworld", types: ["gems", "Sunrise Springs", "Sunny Villa", "Cloud Spires", "Sheila's Alp", "Molten Crater", "Seashell Shore", "Mushroom Speedway"] },
   { name: "Receive 4 Eggs from Hunter", types: ["eggs", "Hunter"] },
   { name: "Collect 225 gems in Frozen Altars", types: ["gems", "Frozen Altars"] }
 ];
@@ -70,7 +70,7 @@ bingoList[11] = [
 ];
 bingoList[12] = [
   { name: "Collect 20 orbs", types: ["orbs"] },
-  { name: "Collect 200 gems in every Summer Forest level", types: ["gems", "Summer Forest", "Glimmer", "Idol Springs", "Colossus", "Hurricos", "Sunny Beach", "Ocean Speedway", "Aquaria Towers"] },
+  { name: "Collect 200 gems in every Summer Forest level including the homeworld", types: ["gems", "Summer Forest", "Glimmer", "Idol Springs", "Colossus", "Hurricos", "Sunny Beach", "Ocean Speedway", "Aquaria Towers"] },
   { name: "Pay Money Bags 5 times", types: ["Money Bags"] },
   { name: "Collect 225 gems in Zephyr", types: ["gems", "Zephyr"] }
 ];
@@ -78,17 +78,17 @@ bingoList[13] = [
   { name: "100% all 'Icy' levels", types: ["100%", "Icy Flight", "Icy Speedway", "Icy Peak"] },
   { name: "100% all 'Towers' levels", types: ["100%", "Haunted Towers", "Aquaria Towers", "Enchanted Towers"] },
   { name: "Achieve 10 Skill Points", types: ["skill point"] },
-  { name: "Collect 5 Keys", types: ["key"] }
+  { name: "Collect 5 Keys as Spyro", types: ["key"] }
 ];
 // 
 bingoList[14] = [
   { name: "100% all 'Crystal' levels", types: ["100%", "Crystal Flight", "Crystal Glacier", "Crystal Islands"] },
   { name: "100% all 'Haunted' levels", types: ["100%", "Haunted Towers", "Haunted Tomb"] },
   { name: "Collect 150000 gems", types: ["gems"] },
-  { name: "Collect 20 Free Lives", types: ["lives"] }
+  { name: "Collect 20 Free Life bottles/chests", types: ["lives"] }
 ];
 bingoList[15] = [
-  { name: "100% all Beast Makers levels", types: ["100%", "Beast Makers", "Terrace Village", "Wild Flight", "Misty Bog", "Tree Tops", "Metalhead"] },
+  { name: "100% all Beast Makers levels including the homeworld", types: ["100%", "Beast Makers", "Terrace Village", "Wild Flight", "Misty Bog", "Tree Tops", "Metalhead"] },
   { name: "Get the Red Spring Chest", types: ["Lofty Castle"] },
   { name: "Collect 300 gems in Lofty Castle", types: ["gems", "Lofty Castle"] },
   { name: "Save all 3 Dragons in Dream Weavers", types: ["dragons", "Dream Weavers"] }
@@ -101,8 +101,8 @@ bingoList[16] = [
   { name: "Collect all Orbs in Mystic Marsh", types: ["orbs", "Mystic Marsh"] }
 ];
 bingoList[17] = [
-  { name: "Collect 150 gems in every Midday Gardens level", types: ["gems", "Midday Gardens", "Icy Peak", "Enchanted Towers", "Spooky Swamp", "Sgt. Byrd's Base", "Bamboo Terrace", "Country Speedway"] },
-  { name: "Collect all Skateboaring Eggs", types: ["eggs", "Sunny Villa", "Enchanted Towers", "Lost Fleet", "Hunter"] },
+  { name: "Collect 150 gems in every Midday Gardens level including the homeworld", types: ["gems", "Midday Gardens", "Icy Peak", "Enchanted Towers", "Spooky Swamp", "Sgt. Byrd's Base", "Bamboo Terrace", "Country Speedway"] },
+  { name: "Collect all Skateboarding Eggs", types: ["eggs", "Sunny Villa", "Enchanted Towers", "Lost Fleet", "Hunter"] },
   { name: "Collect 250 gems in Charmed Ridge", types: ["gems", "Charmed Ridge"] },
   { name: "Collect 275 gems in Fireworks Factory", types: ["gems", "Fireworks Factory"] }
 ];
@@ -113,13 +113,13 @@ bingoList[18] = [
   { name: "Save 4 Dragons in Dark Passage", types: ["dragons", "Dark Passage"] }
 ];
 bingoList[19] = [
-  { name: "Collect 150 gems in every Autumn Plains level", types: ["gems", "Autumn Plains", "Crystal Glacier", "Skelos Badlands", "Zephyr", "Breeze Harbor", "Scorch", "Fracture Hills", "Magma Cone", "Shady Oasis", "Metro Speedway", "Icy Speedway"] },
-  { name: "Kill all enemies in 10 levels", types: ["enemies"] },
+  { name: "Collect 150 gems in every Autumn Plains level including the homeworld", types: ["gems", "Autumn Plains", "Crystal Glacier", "Skelos Badlands", "Zephyr", "Breeze Harbor", "Scorch", "Fracture Hills", "Magma Cone", "Shady Oasis", "Metro Speedway", "Icy Speedway"] },
+  { name: "Collect all enemy spirits in 10 levels", types: ["enemies"] },
   { name: "Collect all Orbs in Fracture Hills", types: ["orbs", "Fracture Hills"] },
   { name: "Collect 275 gems in Cloud Temples", types: ["gems", "Cloud Temples"] }
 ];
 bingoList[20] = [
-  { name: "Collect 200 gems in every Evening Lake level", types: ["gems", "Evening Lake", "Frozen Altars", "Fireworks Factory", "Lost Fleet", "Charmed Ridge", "Bentley's Outpost", "Honey Speedway"] },
+  { name: "Collect 200 gems in every Evening Lake level including the homeworld", types: ["gems", "Evening Lake", "Frozen Altars", "Fireworks Factory", "Lost Fleet", "Charmed Ridge", "Bentley's Outpost", "Honey Speedway"] },
   { name: "Receive 8 Eggs from Hunter", types: ["eggs", "Hunter"] },
   { name: "Collect all Eggs in Lost Fleet", types: ["eggs", "Lost Fleet"] },
   { name: "Collect 300 gems in Desert Ruins", types: ["gems", "Desert Ruins"] }
@@ -128,26 +128,26 @@ bingoList[20] = [
 bingoList[21] = [
   { name: "100% all 'Harbor' levels", types: ["100%", "Twilight Harbor", "Breeze Harbor", "Harbor Speedway"] },
   { name: "Collect 20000 gems", types: ["gems"] },
-  { name: "Collect 30 Free Lives", types: ["lives"] },
+  { name: "Collect 30 Free Life bottles/chests", types: ["lives"] },
   { name: "Complete ALL Mystery Jars", types: ["mystery jar"] }
 ];
 bingoList[22] = [
   { name: "Collect 40 Orbs", types: ["orbs"] },
-  { name: "Collect 100 gems in every Winter Tundra level", types: ["gems", "Winter Tundra", "Metropolis", "Robotica Farms", "Mystic Marsh", "Canyon Speedway", "Cloud Temple"] },
+  { name: "Collect 100 gems in every Winter Tundra level including the homeworld", types: ["gems", "Winter Tundra", "Metropolis", "Robotica Farms", "Mystic Marsh", "Canyon Speedway", "Cloud Temple"] },
   { name: "Collect all Homeworld Orbs", types: ["orbs", "Summer Forest", "Autumn Plains", "Winter Tundra"] },
-  { name: "Complete 30 minigame/side areas", types: ["orbs", "eggs"] }
+  { name: "Collect 30 orbs/eggs from minigames/side areas", types: ["orbs", "eggs"] }
 ];
 bingoList[23] = [
   { name: "Pay Money Bags 10 times", types: ["Money Bags"] },
-  { name: "Collect 250 gems in every Midnight Mountain level", types: ["gems", "Midnight Mountain", "Agent 9's Lab", "Crystal Island", "Desert Ruin", "Haunted Tomb", "Dino Mines", "Harbor Speedway"] },
-  { name: "Collect all Homeworld Eggs", types: ["eggs", "Sunrise Springs", "Midday Gardens", "Evening Lake", "Midnight Mountain"] },
+  { name: "Collect 250 gems in every Midnight Mountain level including the homeworld", types: ["gems", "Midnight Mountain", "Agent 9's Lab", "Crystal Island", "Desert Ruin", "Haunted Tomb", "Dino Mines", "Harbor Speedway"] },
+  { name: "Collect all Homeworld Eggs (except Money Bags)", types: ["eggs", "Sunrise Springs", "Midday Gardens", "Evening Lake", "Midnight Mountain"] },
   { name: "Collect all Eggs in Dino Mines", types: ["eggs", "Dino Mines"] }
 ];
 bingoList[24] = [
-  { name: "100% all 'Speedway' levels", types: ["100%", "Ocean Speedway", "Metro Speedway", "Icy Speedway", "Canyon Speedway", "Mushroom Speedway", "Country Speedway", "Honey Speedway", "Harbor Speedway"] },
+  { name: "100% all 'Speedway' levels in Spyro 2", types: ["100%", "Ocean Speedway", "Metro Speedway", "Icy Speedway", "Canyon Speedway"] },
   { name: "100% all 'Homeworld' levels", types: ["100%", "Artisans", "Peace Keepers", "Magic Crafters", "Beast Makers", "Dream Weavers", "Gnorc Nexus", "Summer Forest", "Autumn Plains", "Winter Tundra", "Sunrise Springs", "Midday Gardens", "Evening Lake", "Midnight Mountain"] },
   { name: "Achieve 15 Skill Points", types: ["skill point"] },
-  { name: "Collect 10 Keys", types: ["key"] }
+  { name: "Collect 10 Keys as Spyro", types: ["key"] }
 ];
 bingoList[25] = [
   { name: "Complete all Flights", types: ["100%", "Sunny Flight", "Night Flight", "Wild Flight", "Crystal Flight", "Icy Flight"] },
