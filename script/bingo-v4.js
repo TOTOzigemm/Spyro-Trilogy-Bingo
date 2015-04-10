@@ -1,28 +1,38 @@
 srl.bingo = function (bingoList, size) {
-  var LANG = gup( 'lang' );
-  if (LANG == '') LANG = 'name';
-  var SEED = gup( 'seed' );
-  if (SEED == "") {
-    window.location = '?seed=' + Math.ceil(999999 * Math.random());
-  }
-  var MODE = gup( 'mode' );
-  var cardtype = "string";
-  if (MODE == "short") {
-    cardtype = "Short";
-  } else if (MODE == "long") {
-    cardtype = "Long";
-  } else {
-    cardtype = "Normal";
-  }
-  if (typeof size == 'undefined') size = 5;
+
+	function gup( name ) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var regexS = "[\\?&]"+name+"=([^&#]*)";
+		var regex = new RegExp( regexS );
+		var results = regex.exec( window.location.href );
+		if( results == null )
+			return "";
+		else
+			return results[1];
+	}
+
+	var LANG = gup( 'lang' );
+	if (LANG == '') LANG = 'name';
+	var SEED = gup( 'seed' );
+	if (SEED == "") {
+		window.location = '?seed=' + Math.ceil(999999 * Math.random());
+	} else {
+	var MODE = gup( 'mode' );
+	var cardtype = "string";
+	
+	if (MODE == "short") { cardtype = "Short"; } 
+	else if (MODE == "long") { cardtype = "Long"; }
+	else { cardtype = "Normal";	}
+	
+	if (typeof size == 'undefined') size = 5;
   
-  Math.seedrandom(SEED); //sets up the RNG
-  var MAX_SEED = 999999; //1 million cards
-  var results = $("#results");
-  results.append ("<p>SRL Bingo <strong>v4</strong>&emsp;Seed: <strong>" + 
-  SEED + "</strong>&emsp;Card type: <strong>" + cardtype + "</strong></p>");
+	Math.seedrandom(SEED); //sets up the RNG
+	var MAX_SEED = 999999; //1 million cards
+	var results = $("#results");
+	results.append ("<p>SRL Bingo <strong>v5</strong>&emsp;Seed: <strong>" + 
+	SEED + "</strong>&emsp;Card type: <strong>" + cardtype + "</strong></p>");
   
-  var lineCheckList = [];
+	var lineCheckList = [];
   
   
   if (size == 5) {
@@ -59,7 +69,22 @@ srl.bingo = function (bingoList, size) {
   
   }
   
-  $("#bingo tr td:not(.no), #selected td").toggle(
+    $('.popout').click(function() {
+        var mode = null;
+        var line = $(this).attr('id');
+        var name = $(this).html();
+        var items = [];
+        var cells = $('#bingo .'+ line);
+        for (var i = 0; i < 5; i++) {
+          items.push($(cells[i]).html());
+        };
+        if (mode == 'simple-stream') {
+          window.open('/tools/bingo-popout-basic.html#'+ name +'='+ items.join(';;;'),"_blank","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=420, height=180"); }
+        else {
+          window.open('./tools/bingo-popout.html#'+ name +'='+ items.join(';;;'),"_blank","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=220, height=460"); }
+    });
+  
+  $("#bingo tr td:not(.popout), #selected td").toggle(
     function () {
       $(this).addClass("greensquare");
     },
@@ -72,13 +97,107 @@ srl.bingo = function (bingoList, size) {
     
   );
   
-  /*
-  for (var i=1;i<=25;i++) {
-    bingoList[i] = [];
-    $('#slot'+i).attr('data-difficulty', difficulty(i)); // put difficulty in attr
-    $('#slot'+i).attr('data-type', 'none');  // fill type attr with none
-  } 
-  */
+$("#row1").hover(function() { $(".row1").addClass("hover"); }, function() {	$(".row1").removeClass("hover"); });
+$("#row2").hover(function() { $(".row2").addClass("hover"); }, function() {	$(".row2").removeClass("hover"); });
+$("#row3").hover(function() { $(".row3").addClass("hover"); }, function() {	$(".row3").removeClass("hover"); });
+$("#row4").hover(function() { $(".row4").addClass("hover"); }, function() {	$(".row4").removeClass("hover"); });
+$("#row5").hover(function() { $(".row5").addClass("hover"); }, function() {	$(".row5").removeClass("hover"); });
+
+$("#col1").hover(function() { $(".col1").addClass("hover"); }, function() {	$(".col1").removeClass("hover"); });
+$("#col2").hover(function() { $(".col2").addClass("hover"); }, function() {	$(".col2").removeClass("hover"); });
+$("#col3").hover(function() { $(".col3").addClass("hover"); }, function() {	$(".col3").removeClass("hover"); });
+$("#col4").hover(function() { $(".col4").addClass("hover"); }, function() {	$(".col4").removeClass("hover"); });
+$("#col5").hover(function() { $(".col5").addClass("hover"); }, function() {	$(".col5").removeClass("hover"); });
+
+$("#tlbr").hover(function() { $(".tlbr").addClass("hover"); }, function() {	$(".tlbr").removeClass("hover"); });
+$("#bltr").hover(function() { $(".bltr").addClass("hover"); }, function() {	$(".bltr").removeClass("hover"); });
+
+function mirror(i) {
+	if      (i == 0) { i = 4; }
+	else if (i == 1) { i = 3; }
+	else if (i == 3) { i = 1; }
+	else if (i == 4) { i = 0; }
+	return i;
+}
+
+function difficulty(i) {
+	// To create the magic square we need 2 random orderings of the numbers 0, 1, 2, 3, 4.
+	// The following creates those orderings and calls them Table5 and Table1
+	
+	var Num3 = SEED%1000;	// Table5 will use the ones, tens, and hundreds digits.
+
+	var Rem8 = Num3%8;
+	var Rem4 = Math.floor(Rem8/2);
+	var Rem2 = Rem8%2;
+	var Rem5 = Num3%5;
+	var Rem3 = Num3%3;	// Note that Rem2, Rem3, Rem4, and Rem5 are mathematically independent.
+	var RemT = Math.floor(Num3/120);	// This is between 0 and 8		
+
+	// The idea is to begin with an array containing a single number, 0.
+	// Each number 1 through 4 is added in a random spot in the array's current size.
+	// The result - the numbers 0 to 4 are in the array in a random (and uniform) order.
+	var Table5 = [0];
+	Table5.splice(Rem2, 0, 1);
+	Table5.splice(Rem3, 0, 2);
+	Table5.splice(Rem4, 0, 3);
+	Table5.splice(Rem5, 0, 4);
+
+	Num3 = Math.floor(SEED/1000);	// Table1 will use the next 3 digits.
+	Num3 = Num3%1000;
+
+	Rem8 = Num3%8;
+	Rem4 = Math.floor(Rem8/2);
+	Rem2 = Rem8%2;
+	Rem5 = Num3%5;
+	Rem3 = Num3%3;
+	RemT = RemT * 8 + Math.floor(Num3/120);	 // This is between 0 and 64.
+
+	var Table1 = [0];
+	Table1.splice(Rem2, 0, 1);
+	Table1.splice(Rem3, 0, 2);
+	Table1.splice(Rem4, 0, 3);
+	Table1.splice(Rem5, 0, 4);
+
+	i--;
+	RemT = RemT%5;		//  Between 0 and 4, fairly uniformly.
+	x = (i+RemT)%5;		//  RemT is horizontal shift to put any diagonal on the main diagonal.
+	y = Math.floor(i/5);
+
+	// The Tables are set into a single magic square template
+	// Some are the same up to some rotation, reflection, or row permutation.
+	// However, all genuinely different magic squares can arise in this fashion.
+	var e5 = Table5[(x + 3*y)%5];
+	var e1 = Table1[(3*x + y)%5];
+
+	// Table5 controls the 5* part and Table1 controls the 1* part.
+	value = 5*e5 + e1;
+
+	if (MODE == "short") { value = Math.floor(value/2); } // if short mode, limit difficulty
+    	else if (MODE == "long") { value = Math.floor((value + 25) / 2); }
+    	value++;
+	return value;
+}
+  
+function checkLine (i, typesA) {
+	var synergy = 0;
+	for (var j=0; j<lineCheckList[i].length; j++) {
+		var typesB = bingoBoard[lineCheckList[i][j]+1].types;
+		if (typeof typesB != 'undefined') {
+			for (var k=0; k < typesA.length; k++) {
+				for (var l=0; l < typesB.length; l++) {
+					if (typesA[k] == typesB[l]) {
+						synergy++; // if match increase
+						if (k==0) { synergy++ }; // if main type increase
+						if (l==0) { synergy++ }; // if main type increase
+					}
+				}
+			}
+		}
+	}
+	return synergy;
+}
+
+
   var bingoBoard = []; //the board itself stored as an array first
   for (var i=1;i<=25;i++) {
     bingoBoard[i] = {difficulty: difficulty(i)}; //array with objects that
@@ -114,114 +233,6 @@ srl.bingo = function (bingoList, size) {
     //$('#slot'+i).append("<br/>" + bingoBoard[i].synergy);
   }
   
-  function checkLine (i, typesA) {
-    var synergy = 0;
-    
-    for (var j=0; j<lineCheckList[i].length; j++) {
-      var typesB = bingoBoard[lineCheckList[i][j]+1].types;
-      if (typeof typesB != 'undefined') {
-      
-        for (var k=0; k < typesA.length; k++) {
-          for (var l=0; l < typesB.length; l++) {
-            if (typesA[k] == typesB[l]) {
-              synergy++; // if match increase
-              if (k==0) { synergy++ }; // if main type increase
-              if (l==0) { synergy++ }; // if main type increase
-            }
-          }
-        }
-      }
-      
-    }
-    
-    return synergy;
-  }
-  
-  //OLD SHIT
-  /*
-  for (var i=1;i<=25;i++) {
-    var x = false;
-    var getDifficulty, thisRand, thisName, thisType, comboBreaker;
-    getDifficulty = $('#slot'+i).attr('data-difficulty'); // difficulty of current square
-    while (x == false) {
-      thisRand = Math.floor(bingoList[getDifficulty].length * Math.random()); // random item #
-      thisName = bingoList[getDifficulty][thisRand].name; // name of item
-      thisType = bingoList[getDifficulty][thisRand].type; // type of item
-      thisType2 = bingoList[getDifficulty][thisRand].type2; // type of item
-      x = checkLine(i, thisType, thisType2);
-      comboBreaker++;
-      if (comboBreaker > 15) {x = true;}
-    }
-    comboBreaker = 0;
-    $('#slot'+i).append(thisName); // add the name to the square
-    $('#slot'+i).attr('data-type', thisType); // put the type in the attr
-    if (thisType2 != "") { $('#slot'+i).attr('data-type2', thisType2); } // sometimes put type2
-    bingoList[getDifficulty].splice(thisRand,1);
-    //results.append("<br/>Removed: " + getDifficulty + " " + thisRand);
-    //results.append("<br/>randomized: " + thisRand + " " + thisName + " " + thisType);
-  }
-  */
-  
-  
-
-  
-  function gup( name ) {
-    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regexS = "[\\?&]"+name+"=([^&#]*)";
-    var regex = new RegExp( regexS );
-    var results = regex.exec( window.location.href );
-    if( results == null )
-      return "";
-    else
-      return results[1];
-  }
-  
-  function mirror(i) {
-    if      (i == 0) { i = 4; }
-    else if (i == 1) { i = 3; }
-    else if (i == 3) { i = 1; }
-    else if (i == 4) { i = 0; }
-    return i;
-  }
-  
-  function difficulty(i) {
-    var x = 0;
-    var y = 0;
-    i--; // i = 0 on square 0,0; 24 on square 4,4
-    x = i%5; // take x position
-    x = 5+(SEED-x); // randomize it with the seed
-    y = Math.floor(i/5); // same for y... except:
-    y = 5+(Math.floor(SEED/10)-y); // randomize it using the tens place
-    
-    //results.append("<br/>index: " + i + " | x: " + x + " | y: " + y);
-    
-    if (SEED > MAX_SEED/2) { // one in two chance of swapping x and y to rotate the board
-      var temp = x;
-      x = y;
-      y = temp;
-    }
-    
-    x = x%5;
-    y = y%5;
-    
-    // mirror the board sometimes
-    if (SEED > MAX_SEED*(3/4)) {
-      x = mirror(x);
-      y = mirror(y);
-    }
-    else if (SEED > MAX_SEED*(2/4)) {
-      x = mirror(x);
-    }
-    else if (SEED > MAX_SEED*(1/4)) {
-      y = mirror(y);
-    }
-    
-    var value = (5*((x+2*y)%5)) + ((x+3*y)%5); // magic square generator
-    if (MODE == "short") { value = Math.floor(value/2); } // if short mode, limit difficulty
-    else if (MODE == "long") { value = Math.floor((value + 25) / 2); }
-    value++;
-    //results.append("<br/>VALUE: " + value);
-    return value;
-  }
+}
   
 } // setup
