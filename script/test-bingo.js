@@ -84,7 +84,7 @@ bingoList[13] = [
 bingoList[14] = [
   { name: "100% all 'Crystal' levels", types: ["100%", "Crystal Flight", "Crystal Glacier", "Crystal Islands"] },
   { name: "100% all 'Haunted' levels", types: ["100%", "Haunted Towers", "Haunted Tomb"] },
-  { name: "Collect 150000 gems", types: ["gems"] },
+  { name: "Collect 100000 gems", types: ["gems"] },
   { name: "Collect 20 Free Life bottles/chests", types: ["lives"] }
 ];
 bingoList[15] = [
@@ -127,7 +127,7 @@ bingoList[20] = [
 // 
 bingoList[21] = [
   { name: "100% all 'Harbor' levels", types: ["100%", "Twilight Harbor", "Breeze Harbor", "Harbor Speedway"] },
-  { name: "Collect 20000 gems", types: ["gems"] },
+  { name: "Collect 12500 gems", types: ["gems"] },
   { name: "Collect 30 Free Life bottles/chests", types: ["lives"] },
   { name: "Complete ALL Mystery Jars", types: ["mystery jar"] }
 ];
